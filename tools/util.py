@@ -1,4 +1,14 @@
 import matplotlib.pyplot as plt
+import os
+import zipfile
+
+
+def gzip(gpath):
+  local_zip = gpath
+  zip_ref = zipfile.ZipFile(local_zip, 'r')
+  zip_ref.extractall('.')
+  zip_ref.close()
+
 
 def show_train_history(train_history,train,validation):
     plt.plot(train_history.history[train])
