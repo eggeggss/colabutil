@@ -5,8 +5,6 @@ colabutil
 
 Keras快速api
 
-
-
 第一層dnn
 Dense(units,input_dim,kernel_initializer='normal',activation='relu')
 
@@ -17,8 +15,6 @@ MaxPooling2D(x,x)
 
 model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
 
-
-
 model.fit(x,y,validation_split,epochs,batch_size,verbose)
 
 metric=model.evaluate(x_test_normal,y_test_onehot)
@@ -28,13 +24,30 @@ meric[0] =>loss ,mertric[1] =>acc
 </pre>
 
 <pre>
-rom keras import optimizers 
-
+from keras import optimizers 
 model.compile(loss='binary_crossentropy',
               optimizer=optimizers.RMSprop(lr=1e-4),
               #optimizer='adam',
               metrics=['accuracy'])
               
+</pre>
+<pre>
+from colabutil.tools import util
+#取得image路徑
+image_train_list=prepare_image_dir('train')
+
+#路徑圖片resize並轉成numpy array
+x_train_image=image_list_to_nparray(image_train_list,height,width,channel)
+
+#顯示圖片
+util.plot_images_labels_prediction(x_train_image,y_train_label,[],0)
+
+#畫grad_history
+util.draw_history(grad_historys,'acc')
+
+#解壓縮
+util.gzip('gdata.zip')
+
 </pre>
 
 
