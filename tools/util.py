@@ -1,9 +1,32 @@
 import matplotlib.pyplot as plt
 import os
 import zipfile
+import random
+from PIL import Image
+import numpy as np
 
+def prepare_image_dir(datatype):
+    train_img_list=[]
+    #遍歷gdata/train
+    for root,dir,file in os.walk(os.path.join(image_path,datatype)):
+        for name in file:
+            train_img_list.append(os.path.join(root,name))
+      
+    random.shuffle(train_img_list)
+    return train_img_list
 
+def image_list_to_nparray(image_list,height,width,channel):
+  
+    num=len(image_list)
+    
+    img_np_array=np.zeros((num,height,width,channel),dtype=np.uint8)
+      
+    for i,image_file_path in enumerate(image_list):
+        img=Image.open(image_file_path)
+        img=img.resize((height,width),Image.BILINEAR)
+        img_np_array[i]=img
 
+    return img_np_array
 
 def gzip(gpath):
   local_zip = gpath
