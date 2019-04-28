@@ -8,7 +8,7 @@ import numpy as np
 def prepare_image_dir(datatype):
     train_img_list=[]
     #遍歷gdata/train
-    for root,dir,file in os.walk(os.path.join(image_path,datatype)):
+    for root,dir,file in os.walk(datatype):
         for name in file:
             train_img_list.append(os.path.join(root,name))
       
