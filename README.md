@@ -5,14 +5,19 @@ colabutil
 
 Keras快速api
 
+
+
+第一層dnn
 Dense(units,input_dim,kernel_initializer='normal',activation='relu')
 
-Conv2D(input_shape,filters,kernel_size,padding,activation)
+第一層cnn
+cnn1=Conv2D(input_shape=(64,64,3),filters=filter_1,kernel_size=(3,3),padding='same',activation='relu')
 
 MaxPooling2D(x,x)
 
-model.compile(loss='categorical_crossentropy',optimizer='adam',
-metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
+
+
 
 model.fit(x,y,validation_split,epochs,batch_size,verbose)
 
@@ -20,9 +25,18 @@ metric=model.evaluate(x_test_normal,y_test_onehot)
 
 meric[0] =>loss ,mertric[1] =>acc
 
-
-
 </pre>
+
+<pre>
+rom keras import optimizers 
+
+model.compile(loss='binary_crossentropy',
+              optimizer=optimizers.RMSprop(lr=1e-4),
+              #optimizer='adam',
+              metrics=['accuracy'])
+              
+</pre>
+
 
 regulation 降低overfiting
 
