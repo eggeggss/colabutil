@@ -12,6 +12,12 @@ MaxPooling2D(x,x)
 
 model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
 
+<h5>cnn</h5>
+model.compile(loss='binary_crossentropy',
+              optimizer=optimizers.RMSprop(lr=1e-4),
+              #optimizer='adam',
+              metrics=['accuracy'])
+
 model.fit(x,y,validation_split,epochs,batch_size,verbose)
 
 metric=model.evaluate(x_test_normal,y_test_onehot)
