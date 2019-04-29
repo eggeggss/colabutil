@@ -18,7 +18,10 @@ model.compile(loss='binary_crossentropy',
               #optimizer='adam',
               metrics=['accuracy'])
 
+
 model.fit(x,y,validation_split,epochs,batch_size,verbose)
+
+grad_historys=model.fit(x_train_image_normal,y_train_label,validation_data=(x_valid_image_normal,y_valid_label),epochs=15,batch_size=32,verbose=1)
 
 metric=model.evaluate(x_test_normal,y_test_onehot)
 
